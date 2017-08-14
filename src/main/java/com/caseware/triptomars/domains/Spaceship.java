@@ -1,11 +1,16 @@
 package com.caseware.triptomars.domains;
 
+import javax.persistence.Entity;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Spaceship {
 	
 	//Make the array temporarily smaller for easier development.
 	private static final int CABINS = 4;
-	private static final int ROWS = 50;
-	private static final int COLS = 50;
+	private static final int ROWS = 5;
+	private static final int COLS = 5;
 	
 	//Used primitive type int instead of an object type due to this large array
 	//taking lots of memory.
@@ -19,14 +24,7 @@ public class Spaceship {
 	
 	public Spaceship() {
 		
-		//Initialize the floor map.
-		for (int i = 0; i < CABINS; i++) {
-			for (int j = 0; j < ROWS; j++) {
-				for (int k = 0; k < COLS; k++) {
-					floorMap[i][j][k] = EMPTY;
-				}
-			}
-		}
+		initializeFloormap();
 	}
 	
 	public int[][][] getFloorMap() {
@@ -35,6 +33,20 @@ public class Spaceship {
 
 	public void setFloorMap(int[][][] floorMap) {
 		this.floorMap = floorMap;
+	}
+	
+	/**
+	 * Helper method to initialize the floor map.
+	 */
+	private void initializeFloormap() {
+		//Initialize the floor map.
+		for (int i = 0; i < CABINS; i++) {
+			for (int j = 0; j < ROWS; j++) {
+				for (int k = 0; k < COLS; k++) {
+					floorMap[i][j][k] = EMPTY;
+				}
+			}
+		}
 	}
 
 	@Override

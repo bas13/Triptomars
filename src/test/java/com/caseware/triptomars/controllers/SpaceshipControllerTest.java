@@ -45,10 +45,8 @@ public class SpaceshipControllerTest {
 	
 	@Test
 	public void testGetShipState() throws Exception {
-		
-		//spaceShip = (Spaceship) webApplicationContext.getBean("spaceship");
-		//String result = spaceShip.toString();
-		mockMvc.perform(get("")).andExpect(status().isOk()).andExpect(content().contentType(contentType)).andDo(print());
+
+		mockMvc.perform(get("/state")).andExpect(status().isOk()).andExpect(content().contentType(contentType)).andDo(print());
 	}
 
 }
