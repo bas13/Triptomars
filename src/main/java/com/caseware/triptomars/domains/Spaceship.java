@@ -1,16 +1,16 @@
 package com.caseware.triptomars.domains;
 
-import javax.persistence.Entity;
+
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class Spaceship {
 	
-	//Make the array temporarily smaller for easier development.
+	//If app taking too long to run, reduce the size of ROWS and COLS.
 	private static final int CABINS = 4;
-	private static final int ROWS = 5;
-	private static final int COLS = 5;
+	private static final int ROWS = 5000;
+	private static final int COLS = 5000;
 	
 	//Used primitive type int instead of an object type due to this large array
 	//taking lots of memory.
@@ -47,6 +47,34 @@ public class Spaceship {
 				}
 			}
 		}
+	}
+
+	public static int getCabins() {
+		return CABINS;
+	}
+
+	public static int getRows() {
+		return ROWS;
+	}
+
+	public static int getCols() {
+		return COLS;
+	}
+
+	public static int getEmpty() {
+		return EMPTY;
+	}
+
+	public static int getPassenger() {
+		return PASSENGER;
+	}
+
+	public static int getMachinery() {
+		return MACHINERY;
+	}
+
+	public static int getContainer() {
+		return CONTAINER;
 	}
 
 	@Override

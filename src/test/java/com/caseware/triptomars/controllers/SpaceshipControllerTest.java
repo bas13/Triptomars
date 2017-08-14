@@ -1,6 +1,6 @@
 package com.caseware.triptomars.controllers;
 
-import static org.junit.Assert.*;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.caseware.triptomars.TriptomarsApplication;
-import com.caseware.triptomars.domains.Spaceship;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TriptomarsApplication.class)
@@ -31,8 +30,6 @@ public class SpaceshipControllerTest {
 	private MediaType contentType = new MediaType(MediaType.TEXT_PLAIN, Charset.forName("utf8"));
 	
 	private MockMvc mockMvc;
-	
-	private Spaceship spaceShip;
 	
 	@Autowired
 	private WebApplicationContext webApplicationContext; 
@@ -44,9 +41,20 @@ public class SpaceshipControllerTest {
 	}
 	
 	@Test
+	public void testNextSpot() throws Exception {
+		mockMvc.perform(get("/next/spot/{o}", 1)).andExpect(status().isOk()).andDo(print());
+	}
+	
+	@Test
 	public void testGetShipState() throws Exception {
-
 		mockMvc.perform(get("/state")).andExpect(status().isOk()).andExpect(content().contentType(contentType)).andDo(print());
 	}
+	
+	@Test
+	public void testObjectAt() throws Exception {
+		mockMvc.perform(get("/object/at/{i}/{j}/{k}",0,1,1)).andExpect(status().isOk()).andDo(print());
+	}
+	
+	
 
 }
